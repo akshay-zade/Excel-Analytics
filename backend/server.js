@@ -20,6 +20,12 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// ✅ VERY IMPORTANT (warna frontend call fail hoga)
+app.use(cors({
+  origin: "https://excel-analytics-ttx9-fey0yl2q8-akshayzades-projects.vercel.app/", // 👈 apna Vercel URL daal
+  credentials: true
+}));
+
 app.use('/api/admin', adminRoutes); // <-- Add this line
 // ===== Application Routes =====
 app.use("/api/auth", authRoutes);
